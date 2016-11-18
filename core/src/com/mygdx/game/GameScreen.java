@@ -45,7 +45,7 @@ public class GameScreen implements Screen {
     public long startTime = TimeUtils.millis();
 	public long currentTime ;
 	public long countTime;
-	public long gameTime = 125*100; 
+	public long gameTime = 125*500; 
 
     public GameScreen(final Fruit gam) {
         this.game = gam;
