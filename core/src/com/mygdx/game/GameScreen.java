@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import java.util.Iterator;
+import java.util.concurrent.TimeUnit;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
@@ -40,6 +41,11 @@ public class GameScreen implements Screen {
     long watermelonTime;
     long strawberryTime;
     int dropsGathered;
+    public static boolean endGame;
+    public long startTime = TimeUtils.millis();
+	public long currentTime ;
+	public long countTime;
+	public long gameTime = 125*500; 
 
     public GameScreen(final Fruit gam) {
         this.game = gam;
@@ -86,7 +92,8 @@ public class GameScreen implements Screen {
        
        watermelons = new Array<Rectangle>();
        spawnWatermelon();
-      
+       startTime = TimeUtils.millis(); 
+        
     }
 
     private void spawnOrange() {
@@ -139,10 +146,21 @@ public class GameScreen implements Screen {
         camera.update();
         game.batch.setProjectionMatrix(camera.combined);
 
-                        
+        
+        currentTime = TimeUtils.timeSinceMillis(startTime);
+		countTime = gameTime-currentTime;
+		countTime = TimeUnit.MILLISECONDS.toSeconds(countTime);
+		if(countTime > 0) {}
+			 else {
+			countTime = 0;
+			endGame = true;
+			 }
+        
+        
         game.batch.begin();
         game.batch.draw(backgroundImage, background.x, background.y);
         game.font.draw(game.batch, "Fruit: " + dropsGathered, 0, 480);
+        game.font.draw(game.batch, "Time: " + countTime, 400, 480);
         game.batch.draw(bucketImage, bucket.x, bucket.y);
         for (Rectangle orange : oranges) {
             game.batch.draw(orangeImage, orange.x, orange.y);

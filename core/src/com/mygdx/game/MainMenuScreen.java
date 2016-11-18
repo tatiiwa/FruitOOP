@@ -1,11 +1,14 @@
 package com.mygdx.game;
 
+import java.util.concurrent.TimeUnit;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.utils.TimeUtils;
 
 public class MainMenuScreen implements Screen {
 
@@ -14,17 +17,20 @@ public class MainMenuScreen implements Screen {
     Rectangle background;
     OrthographicCamera camera;
 
+
     public MainMenuScreen(final Fruit gam) {
         game = gam;
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 600, 800);
+        camera.setToOrtho(false, 800, 520);
         
         backgroundImage = new Texture(Gdx.files.internal("background.jpg"));
         background = new Rectangle();
-        background.x = 800 / 2 - 800 / 2; 
-        background.y = 200; 
-        background.width = 600;
-        background.height = 800;
+        background.x = 0; 
+        background.y = 0; 
+        background.width = 800;
+        background.height = 520;
+        
+
     }
 
     @Override
