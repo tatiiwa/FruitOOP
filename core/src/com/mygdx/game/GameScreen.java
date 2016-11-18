@@ -45,7 +45,7 @@ public class GameScreen implements Screen {
     public long startTime = TimeUtils.millis();
 	public long currentTime ;
 	public long countTime;
-	public long gameTime = 125*500; 
+	public long gameTime = 125*100; 
 
     public GameScreen(final Fruit gam) {
         this.game = gam;
@@ -150,10 +150,14 @@ public class GameScreen implements Screen {
         currentTime = TimeUtils.timeSinceMillis(startTime);
 		countTime = gameTime-currentTime;
 		countTime = TimeUnit.MILLISECONDS.toSeconds(countTime);
-		if(countTime > 0) {}
-			 else {
+		if(countTime > 0) {
+			
+		}
+		else {
+		    game.batch.draw(backgroundImage, background.x, background.y);
+		    game.font.draw(game.batch, "Your score is : " + dropsGathered, 0, 480);
 			countTime = 0;
-			endGame = true;
+            endGame = true;
 			 }
         
         
